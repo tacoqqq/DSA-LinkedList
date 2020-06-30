@@ -352,15 +352,16 @@ function middleOfList(linkedList){
     }    
 
     //if odd nodes
-    let currentNode = linkedList.head
+    let currentNodeCopy = linkedList.head
     let currentPosition = 1
-    let middlePosition = Mathfloor(length / 2) + 1        
+    let middlePosition = Math.floor(length / 2) + 1        
     while (currentPosition !== middlePosition){
         currentPosition++
-        currentNode = currentNode.next
+        currentNodeCopy = currentNodeCopy.next
     }
-    return currentNode
+    return currentNodeCopy
 }
+
 
 /*
 Cycle in a list
@@ -385,20 +386,11 @@ function cycleList(linkedList){
         return
     }    
 
-    //calculate length
-    let length = 0
     let currentNode = linkedList.head
     while (currentNode !== null){
-      length++
-      currentNode = currentNode.next
-    }        
-
-    //more than or equal to three nodes
-    let currentNode = linkedList.head
-    let nextNode = linkedList.head
-    for (let i = 1 ; i < length ; i++){
-        for (let j = 2 ; j <= length ; j++){
-            if (curretnNode == nextNode){
+        let nextNode = currentNode.next
+        while (nextNode !== null){
+            if (currentNode.value == nextNode.value){
                 return true
             } else {
                 nextNode = nextNode.next
